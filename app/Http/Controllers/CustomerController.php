@@ -21,7 +21,7 @@ class CustomerController extends Controller
     public function store(CustomerRequest $request)
     {
         try {
-
+            
             $file = Storage::put('uploads', $request->file);
             
             UploadCustomer::create(['file' => $file]);

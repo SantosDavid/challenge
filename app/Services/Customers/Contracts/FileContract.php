@@ -2,7 +2,12 @@
 
 namespace Services\Customers\Contracts;
 
-interface FileContract
+abstract class FileContract
 {
-    public function toArray() : Array;
+    protected $file;
+
+    public function setFile(string $file)
+    {
+        $this->file = $file;
+    }
 }

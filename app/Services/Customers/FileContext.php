@@ -12,4 +12,14 @@ class FileContext
     {
         $this->fileStrategy = $file;
     }
+
+    public function setFile(string $file)
+    {
+        $this->fileStrategy->setFile($file);
+    }
+    
+    public function getNextLine()
+    {
+        return $this->fileStrategy->getNextLine();
+    }
 }

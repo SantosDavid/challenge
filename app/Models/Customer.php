@@ -6,5 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    //
+    protected $fillable = [
+        'name',
+        'email', 
+        'birthday',
+        'cpf', 
+    ];
+
+    public function getFieldsName()
+    {
+        return $this->fillable;
+    }
 }
