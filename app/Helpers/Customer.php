@@ -7,19 +7,8 @@ use App\Models\Customer as Model;
 
 class Customer
 {
-    private $fieldsName;
-
-    public function __construct(Model $customer)
-    {
-        $this->fieldsName = $customer->getFieldsName();
-    }
-
-    public function format(array $row): array
-    {
-        $values = array_slice($row, 0, count($this->fieldsName));
-            
-        $customer = array_combine($this->fieldsName, $values);
-      
+    public function format(array $customer): array
+    { 
         $this->formatBirthDay($customer);
         $this->formatCpf($customer);
        

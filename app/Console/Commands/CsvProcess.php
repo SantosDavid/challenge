@@ -9,6 +9,7 @@ use Illuminate\Console\Command;
 use Services\Customers\FileContext;
 use Services\Customers\StrategyFactory;
 use Helpers\Customer as Helper;
+use InfraServices\GeoCoding\Contracts\GeoCodingContract;
 
 class CsvProcess extends Command
 {
@@ -18,11 +19,16 @@ class CsvProcess extends Command
 
     private $helper;
 
-    public function __construct(Helper $helper)
+    private $geoCoding;
+
+    public function __construct(Helper $helper, Customer $customer, GeoCodingContract $geoCoding)
     {
         parent::__construct();
 
         $this->helper = $helper;
+        $this->fieldsName = $customer->getFieldsName();
+
+        $this->geoCoding = $geoCoding;
     }
 
     public function handle()
@@ -38,11 +44,17 @@ class CsvProcess extends Command
         
         while ($row = $strategy->getNextLine()) {
           
-            DB::beginTransaction();
+            $values = array_slice($row, 0, count($this->fieldsName));
             
-            $customer = $this->helper->format($row);
+            $customer = array_combine($this->fieldsName, $values);
+            
+            DB::beginTransaction();
 
-            Customer::create($customer);
+            $customer = Customer::create($this->helper->format($customer));
+
+            $address = array_slice($row, count($this->fieldsName));
+
+            dd($this->geoCoding->getGeocoding($address));
         }
     }
 }

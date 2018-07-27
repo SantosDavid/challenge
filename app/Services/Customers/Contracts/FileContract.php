@@ -10,4 +10,6 @@ abstract class FileContract
     {
         $this->file = $file;
     }
+
+    abstract public function getNextLine();
 }
