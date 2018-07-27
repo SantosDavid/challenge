@@ -10,11 +10,10 @@
 </head>
 <body>
     <br>
-    <div class="container">
-        <div class="row">
-            <div class="col-6 offset-3">
-                @yield('content')
-            </div>
+    
+    <div class="row">
+        <div class="col-6 offset-3">
+            @yield('content')
         </div>
     </div>
 

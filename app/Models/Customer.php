@@ -13,8 +13,17 @@ class Customer extends Model
         'cpf', 
     ];
 
+    protected $dates = [
+        'birthday',
+    ];
+
     public function getFieldsName()
     {
         return $this->fillable;
+    }
+
+    public function address()
+    {
+        return $this->hasMany(Address::class);
     }
 }

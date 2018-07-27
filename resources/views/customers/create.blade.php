@@ -4,7 +4,18 @@
 
     <div class="card">
         <div class="card-header">
-            <h2 class="text-center">Cadastro de clientes</h2>
+            <di class="row">
+                <div class="col-8">
+                    <h2>Cadastro de clientes</h2>
+                </div>
+                <div class="col-4">
+                    <a href="{{ route('customers.index') }}">
+                        <button class="btn btn-default float-right">
+                            Listar
+                        </button>
+                    </a>
+                </div>
+            </di>
         </div>
         <div class="card-body">
 

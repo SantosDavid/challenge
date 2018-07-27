@@ -15,4 +15,4 @@ Route::get('/', function () {
     return redirect()->route('customers.create');
 });
 
-Route::resource('customers', 'CustomerController');
+Route::resource('customers', 'CustomerController', ['only' => ['index', 'create', 'store']]);

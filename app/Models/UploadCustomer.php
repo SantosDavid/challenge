@@ -14,4 +14,16 @@ class UploadCustomer extends Model
     {
         $q->where('status', 'waiting');
     }
+
+    public function statusProccessing()
+    {
+        $this->status = 'proccessing';
+        $this->save();
+    }
+
+    public function statusSuccess()
+    {
+        $this->status = 'success';
+        $this->save();
+    }
 }

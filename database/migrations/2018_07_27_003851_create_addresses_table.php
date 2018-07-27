@@ -22,10 +22,11 @@ class CreateAddressesTable extends Migration
                 ->onDelete('cascade');
             $table->string('address', 100);
             $table->integer('number');
-            $table->string('complement', 150);
-            $table->string('neighborhood', 20);
+            $table->string('complement', 150)->nullable();
+            $table->string('neighborhood', 120);
+            $table->string('zipcode', 8);
             $table->string('city', 50);
-            $table->string('latidude', 10);
+            $table->string('latitude', 10);
             $table->string('longitude', 10);
             $table->timestamps();
         });

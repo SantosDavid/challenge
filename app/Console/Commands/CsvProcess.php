@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use DB;
+use App\Models\Address;
 use App\Models\UploadCustomer;
 use App\Models\Customer;
 use Illuminate\Console\Command;
@@ -34,6 +35,9 @@ class CsvProcess extends Command
     public function handle()
     {
         foreach (UploadCustomer::waiting()->get() as $upload) {
+            
+            $upload->statusProccessing();
+
             $this->process(StrategyFactory::make($upload->type), $upload);
         }
     }
@@ -54,7 +58,13 @@ class CsvProcess extends Command
 
             $address = array_slice($row, count($this->fieldsName));
 
-            dd($this->geoCoding->getGeocoding($address));
+            $address = $this->geoCoding->getGeocoding($address[0]);
+            
+            $address = Address::create(array_merge($address, ['customer_id' => $customer->id]));
+            
+            $upload->statusSuccess();
+            
+            DB::commit();
         }
     }
 }
