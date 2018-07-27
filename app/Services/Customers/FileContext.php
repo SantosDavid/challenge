@@ -8,7 +8,7 @@ class FileContext
 {
     private $fileStrategy;
 
-    public function __cunstruct(FileContract $file)
+    public function __construct(FileContract $file)
     {
         $this->fileStrategy = $file;
     }

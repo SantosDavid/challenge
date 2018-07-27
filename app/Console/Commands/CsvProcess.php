@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\UploadCustomer;
+use Services\Customers\StrategyFactory;
 use Illuminate\Console\Command;
 
 class CsvProcess extends Command
@@ -19,7 +20,7 @@ class CsvProcess extends Command
     public function handle()
     {
         foreach (UploadCustomer::waiting()->get() as $upload) {
-           
+            $fileContext = StrategyFactory::make($upload->type);
         }
     }
 }
