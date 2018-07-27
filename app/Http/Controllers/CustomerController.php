@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Storage;
-use App\Models\Csv;
+use App\Models\UploadCustomer;
 use App\Http\Requests\CustomerRequest;
 
 class CustomerController extends Controller
@@ -22,14 +22,14 @@ class CustomerController extends Controller
     {
         try {
 
-            $csv = Storage::put('csvs', $request->csv);
+            $file = Storage::put('uploads', $request->file);
             
-            Csv::create(['csv' => $csv]);
+            UploadCustomer::create(['file' => $file]);
 
             return redirect()->route('customers.create');
 
         } catch (\Exception $e) {
-
+            
             return redirect()->back()->withErrors(['error' => 'Houve um eror na sua solicitação!']);
         }
     }

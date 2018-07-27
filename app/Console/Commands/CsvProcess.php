@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Csv;
+use App\Models\UploadCustomer;
 use Illuminate\Console\Command;
 
 class CsvProcess extends Command
@@ -18,9 +18,8 @@ class CsvProcess extends Command
     
     public function handle()
     {
-        foreach (Csv::waiting()->get() as $file) {
+        foreach (UploadCustomer::waiting()->get() as $upload) {
            
-
         }
     }
 }

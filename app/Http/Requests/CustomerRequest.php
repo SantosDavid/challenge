@@ -14,7 +14,7 @@ class CustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            'csv' => 'required|file', //|mimes:text/csv,csv
+            'file' => 'required|file', //|mimes:text/csv,csv
         ];
     }
 }

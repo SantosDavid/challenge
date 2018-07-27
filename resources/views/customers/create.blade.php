@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-4">
                         <label>Arquivo</label>
-                        <input type="file" name="csv" required>
+                        <input type="file" name="file" required>
                     </div>
                 </div>
                 <br>
