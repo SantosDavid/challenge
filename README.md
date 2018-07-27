@@ -6,7 +6,9 @@
 
 2 - Configure a conexão com o banco e seguida rode <strong>php artisan migrate</strong>
 
-3 - Pronto, o projeto está pronto para ser testado!
+3 - Adicione um csv com clientes pelo painel.
+
+4 - rode <strong>php artisan CsvProccess</strong>
 
 ### Criação de Clientes
 
